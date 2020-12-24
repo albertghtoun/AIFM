@@ -17,6 +17,7 @@ for ((i=0;i<${#arr_aifm_heap_size[@]};++i)); do
     make -j
     rerun_local_iokerneld_args simple 1,2,3,4,5,6,7,8,9,11,12,13,14,15
     rerun_mem_server
+    echo "running heap size = $cur_heap_size"
     run_program ./main | grep "=" 1>log.$local_mem_size 2>&1
 done
 

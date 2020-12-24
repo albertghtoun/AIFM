@@ -41,7 +41,7 @@ private:
   constexpr static uint32_t kNumKVPairs = 1 << 27;
   constexpr static uint32_t kNumItersPerScope = 64;
   constexpr static uint32_t kMaxNumMutatorThreads = 400;
-  constexpr static uint32_t kNumMutatorThreads = 10;
+  constexpr static uint32_t kNumMutatorThreads = 400;
   constexpr static uint32_t kReqSeqLenPerCore = kNumKVPairs;
   constexpr static uint32_t kNumConnections = 650;
   constexpr static uint32_t kMonitorPerIter = 262144;

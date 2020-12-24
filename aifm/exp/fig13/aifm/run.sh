@@ -12,6 +12,7 @@ do
     make CXXFLAGS="-DDELAY_NS_PER_ITER=$delay_ns" -j
     rerun_local_iokerneld_noht
     rerun_mem_server
+    echo "running delay_ns = $delay_ns"
     run_program_noht ./main 1>log.$delay_ns 2>&1    
 done
 kill_local_iokerneld

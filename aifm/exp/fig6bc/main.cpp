@@ -39,7 +39,7 @@ namespace far_memory {
 class FarMemTest {
 private:
   // FarMemManager.
-  constexpr static uint64_t kCacheSize = 563 * Region::kSize;
+  constexpr static uint64_t kCacheSize = 20480 * Region::kSize;
   constexpr static uint64_t kFarMemSize = (17ULL << 30); // 17 GB
   constexpr static uint32_t kNumGCThreads = 12;
   constexpr static uint32_t kNumConnections = 300;
@@ -47,7 +47,7 @@ private:
   // Hashtable.
   constexpr static uint32_t kKeyLen = 12;
   constexpr static uint32_t kValueLen = 4;
-  constexpr static uint32_t kLocalHashTableNumEntriesShift = 25;
+  constexpr static uint32_t kLocalHashTableNumEntriesShift = 28;
   constexpr static uint32_t kRemoteHashTableNumEntriesShift = 28;
   constexpr static uint64_t kRemoteHashTableSlabSize = (4ULL << 30) * 1.05;
   constexpr static uint32_t kNumKVPairs = 1 << 27;

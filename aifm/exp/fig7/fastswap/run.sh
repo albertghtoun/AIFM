@@ -20,5 +20,6 @@ for cache_size in ${cache_sizes[@]}
 do
     mem_bytes_limit=`echo $(($(($(($cache_size * 1024))*1024))*1024))`
     sudo sh -c "echo $mem_bytes_limit > /sys/fs/cgroup/unified/bench/memory.high"
+    echo "running cache_size = $cache_size"
     sudo taskset -c 1 ./bin/main > $log_folder/log.$cache_size
 done

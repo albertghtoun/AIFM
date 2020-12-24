@@ -12,6 +12,7 @@ do
     make -j
     rerun_local_iokerneld
     rerun_mem_server
+    echo "running zip_s = $zip_s"
     run_program ./main 1>log.$zip_s 2>&1
 done
 kill_local_iokerneld

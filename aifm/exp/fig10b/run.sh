@@ -12,6 +12,7 @@ do
     make -j
     rerun_local_iokerneld
     rerun_mem_server
+    echo "running num_mutators = $num_mutators"
     run_program ./main 1>log.$num_mutators 2>&1
 done
 kill_local_iokerneld

@@ -5,7 +5,8 @@ log_folder=`pwd`
 cd ../../../
 source shared.sh
 
-cache_sizes=(1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31)
+#cache_sizes=(1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31)
+cache_sizes=(7 9 11 13 15 17 19 21 23 25 27 29 31)
 
 sudo pkill -9 main
 
@@ -28,6 +29,7 @@ do
     make -j
     rerun_local_iokerneld_noht
     rerun_mem_server
+    echo "running cache size = $cache_size"
     run_program_noht ./bin/main_tcp 1>$log_folder/log.$cache_size 2>&1
     cd ..
 done

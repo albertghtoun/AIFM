@@ -28,6 +28,7 @@ do
     make -j
     rerun_local_iokerneld_noht
     rerun_mem_server
+    echo "running cache_size = $cache_size"
     run_program_noht ./bin/main_tcp 1>$log_folder/log.$cache_size 2>&1
     cd ..
 done

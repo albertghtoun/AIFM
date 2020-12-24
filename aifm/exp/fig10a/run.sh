@@ -12,6 +12,7 @@ do
     make -j
     rerun_local_iokerneld
     rerun_mem_server
+    echo "running cache_size = $cache_size"
     run_program ./main 1>log.$cache_size 2>&1
 done
 kill_local_iokerneld
