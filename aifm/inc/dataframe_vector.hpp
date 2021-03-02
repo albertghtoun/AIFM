@@ -102,7 +102,7 @@ public:
 
 template <typename T> class DataFrameVector : public GenericDataFrameVector {
 private:
-  static_assert(is_basic_dataframe_types<T>());
+  // static_assert(is_basic_dataframe_types<T>());
   using Index_t = uint64_t;
   using Pattern_t = int64_t;
 
