@@ -9,8 +9,9 @@ function run_single_test {
     rerun_local_iokerneld
     if [[ $1 == *"tcp"* ]]; then
     	rerun_mem_server
+	echo "abc"
     fi
-    if run_program ./bin/$1 2>/dev/null | grep -q "Passed"; then
+    if run_program ./bin/$1 | grep -q "Passed"; then
         say_passed
     else
         say_failed
@@ -31,7 +32,8 @@ function cleanup {
     kill_mem_server
 }
 
-run_all_tests
+#run_all_tests
+run_single_test test_tcp_array_add
 cleanup
 
 if [[ $all_passed -eq 1 ]]; then

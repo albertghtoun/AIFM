@@ -3,7 +3,7 @@
 AIFM_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 SHENANGO_PATH=$AIFM_PATH/../shenango
 
-MEM_SERVER_DPDK_IP=128.110.154.212
+MEM_SERVER_DPDK_IP=128.110.155.24
 MEM_SERVER_PORT=8000
 MEM_SERVER_STACK_KB=65536
 
@@ -85,6 +85,11 @@ function rerun_mem_server {
 function run_program {    
     sudo stdbuf -o0 sh -c "$1 $AIFM_PATH/configs/client.config \
                            $MEM_SERVER_DPDK_IP:$MEM_SERVER_PORT"
+}
+
+function run_program_w_arg {
+    sudo stdbuf -o0 sh -c "$1 $AIFM_PATH/configs/client.config \
+                           $MEM_SERVER_DPDK_IP:$MEM_SERVER_PORT $2"
 }
 
 function run_program_noht {
