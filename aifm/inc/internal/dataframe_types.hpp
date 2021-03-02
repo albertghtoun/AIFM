@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../DataFrame/AIFM/include/simple_time.hpp"
+#include "../../../AutomineGraph/include/types.h"
 #include "helpers.hpp"
 
 #include <cstdint>
@@ -19,7 +20,8 @@ enum DataFrameTypeID {
   UnsignedLongLong,
   Float,
   Double,
-  Time
+  Time,
+  GraphEdge,
 };
 
 template <typename T> FORCE_INLINE constexpr int8_t get_dataframe_type_id() {
@@ -55,6 +57,9 @@ template <typename T> FORCE_INLINE constexpr int8_t get_dataframe_type_id() {
   }
   if (std::is_same<T, SimpleTime>::value) {
     return DataFrameTypeID::Time;
+  }
+  if (std::is_same<T, EdgeStruct<Empty>>::value) {
+    return DataFrameTypeID::GraphEdge;
   }
   return -1;
 }

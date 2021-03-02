@@ -5,6 +5,7 @@ extern "C" {
 }
 
 #include "../DataFrame/AIFM/include/simple_time.hpp"
+#include "../../../AutomineGraph/include/types.h"
 #include "aggregator.hpp"
 #include "dataframe_vector.hpp"
 #include "internal/dataframe_types.hpp"
@@ -243,6 +244,10 @@ void ServerDataFrameVector<T>::compute_aggregate(uint8_t opcode,
     std::tie(result_size, result_capacity) =
         _compute_aggregate<SimpleTime>(opcode, result_ds, key_ds, size);
     break;
+  case DataFrameTypeID::GraphEdge:
+    std::tie(result_size, result_capacity) =
+        _compute_aggregate<EdgeStruct<Empty>>(opcode, result_ds, key_ds, size);
+    break;
   default:
     BUG();
   }
@@ -339,6 +344,8 @@ ServerDS *ServerDataFrameVectorFactory::build(uint32_t param_len,
     return new ServerDataFrameVector<double>();
   case DataFrameTypeID::Time:
     return new ServerDataFrameVector<SimpleTime>();
+  case DataFrameTypeID::GraphEdge:
+    return new ServerDataFrameVector<EdgeStruct<Empty>>();
   default:
     BUG();
   }
