@@ -8,10 +8,13 @@ GenericDataFrameVector::GenericDataFrameVector(const uint32_t chunk_size,
                                                uint8_t ds_id, uint8_t dt_id)
     : chunk_size_(chunk_size), chunk_num_entries_(chunk_num_entries),
       device_(FarMemManagerFactory::get()->get_device()), ds_id_(ds_id) {
+      printf("In constructing generic dataframe vector. dt_id = %d\n", dt_id);
+      assert(dt_id != -1);
   FarMemManagerFactory::get()->construct(kDataFrameVectorDSType, ds_id,
                                          sizeof(dt_id), &dt_id);
   // DataFrameVector essentially stores a std::vector of GenericUniquePtrs, so
   // it does not need a notifier.
+      printf("Finish constructing generic dataframe vector.\n");
 }
 
 GenericDataFrameVector::~GenericDataFrameVector() { cleanup(); }

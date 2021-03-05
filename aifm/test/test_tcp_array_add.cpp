@@ -108,6 +108,7 @@ int main(int _argc, char *argv[]) {
   }
   argc = _argc - 1;
 
+  printf("initializing runtime [chao]...conf_path = %s\n", conf_path);
   ret = runtime_init(conf_path, _main, argv);
   if (ret) {
     std::cerr << "failed to start runtime" << std::endl;

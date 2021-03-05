@@ -124,6 +124,7 @@ void TCPDevice::construct(uint8_t ds_type, uint8_t ds_id, uint8_t param_len,
                           uint8_t *params) {
   auto remote_slave = shared_pool_.pop();
   _construct(remote_slave, ds_type, ds_id, param_len, params);
+  printf("done construct in TCPDevice.\n");
   shared_pool_.push(remote_slave);
 }
 
